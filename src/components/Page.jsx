@@ -4,7 +4,7 @@ export default function Page({ arr, name, handleClick }) {
     return (
       <div key={movie.id} onClick={() => handleClick(movie)} className="PCard">
         <img
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
           alt="poster"
         />
         <h5>{movie.title}</h5>

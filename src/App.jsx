@@ -21,29 +21,45 @@ function App() {
   };
 
   useEffect(() => {
-    fetch(
+    async function fetchData() {try {
+      
+      const [top,pop,now]=await Promise.all([
+      fetch(
       "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
       options
     )
       .then((res) => res.json())
-      .then((res) => setTopRated(res.results))
-      .catch((err) => console.error(err));
-    fetch(
+      // .then((res) => setTopRated(res.results))
+      ,
+      fetch(
       "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
       options
     )
       .then((res) => res.json())
-      .then((res) => setPopular(res.results));
-    fetch(
+      // .then((res) => setPopular(res.results)),
+      ,
+      fetch(
       "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
       options
     )
       .then((res) => res.json())
-      .then((res) => {
-        setNowPlaying(res.results);
-        setLoading(false);
-      })
-      .catch((err) => console.error(err));
+      // .then((res) => {setNowPlaying(res.results);})  
+    ])
+        setNowPlaying(now.results)
+        setPopular(pop.results)
+        setTopRated(top.results)
+        setLoading(false)
+
+      
+    } catch (error) {
+      console.error(error)
+    }
+    
+}
+    
+fetchData()
+    
+   
   }, []);
 
   const handleClick = (movie) => {

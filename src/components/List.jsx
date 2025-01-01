@@ -11,7 +11,7 @@ export default function List({ arr, name, handleClick }) {
     return (
       <div key={movie.id} onClick={() => handleClick(movie)} className="lCard">
         <img
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
           alt="poster"
         />
         <h5>{movie.title}</h5>
@@ -24,11 +24,15 @@ export default function List({ arr, name, handleClick }) {
   };
   return (
     <>
-      <h1>{name} Movies</h1>
-      <div className="List">
-        {cardElements}
-        <img onClick={arrowClick} src={arrow} alt="view more" />
+      <div className="category">
+        <h1>{name} Movies</h1>
+        <div className="more" onClick={arrowClick}>
+          <h4>View More</h4>
+          <img src={arrow} alt="view more" />
+        </div>
       </div>
+
+      <div className="List">{cardElements}</div>
     </>
   );
 }

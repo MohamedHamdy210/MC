@@ -4,13 +4,16 @@ body {
   background-color: #000;
   box-sizing: border-box;
   color: #fff;
-  overflow-x: hidden;
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 #root {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1rem;
+  /* margin: 1rem; */
 }
 h1 {
   text-align: center;
@@ -39,9 +42,10 @@ h1 {
 }
 .cards {
   display: flex;
+  gap: 1rem;
   transform: translateY(-10rem);
   padding: 2rem;
-  min-height: 350px;
+  
 }
 .card {
   display: flex;
@@ -49,14 +53,12 @@ h1 {
   align-items: center;
   justify-content: flex-end;
   border-radius: 8px;
-  border: #ab0a10 2px solid;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  margin-right: 1rem;
   padding: 2rem;
-  overflow: hidden;
   color: white;
+  overflow: hidden;
 }
 .card > h4 {
   margin: 0;
@@ -66,17 +68,18 @@ h1 {
 .card > button {
   background-color: #ab0a10;
   border: none;
-  min-height: 2.2rem;
-  min-width: 6rem;
+  height: 2.2rem;
+  width: 6rem;
   border-radius: 8px;
   color: #fff;
   cursor: pointer;
   margin: 1rem;
+  font: inherit;
 }
 .lCard {
   border-radius: 8px;
   cursor: pointer;
-  max-width: 20rem;
+  max-width: 11.5rem;
   padding: 0.5rem;
   border: #ab0a10 2px solid;
 }
@@ -85,12 +88,13 @@ h1 {
   max-height: 17rem;
 }
 .lists {
-  transform: translateY(-10rem);
+  transform: translateY(-8rem);
 }
 .List {
   padding: 2rem;
   margin-bottom: 3rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -98,12 +102,30 @@ h1 {
 }
 .List > img {
   width: 5%;
+  
+}
+.category{
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.category>h1{
+  margin-left:2rem ;
+}
+.more{ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   opacity: 0.5;
 }
-.List > img:hover {
+.more>img{
+  width: 5rem;
+}
+.more:hover{
   opacity: 1;
 }
+
 .lCard:hover {
   transform: scale(1.1);
 }
@@ -114,18 +136,22 @@ h1 {
   gap: 2.8rem;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 .PCard {
   text-align: center;
   cursor: pointer;
   border: #ab0a10 2px solid;
   border-radius: 8px;
+  padding: .5rem;
 }
 .PCard:hover {
   transform: scale(1.15);
 }
 .PCard img {
-  max-width: 18rem;
+  border-radius: 8px;
+  
+  max-width: 17rem;
 }
 .overlay {
   position: fixed;
@@ -135,32 +161,44 @@ h1 {
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 .model {
+  border-radius: 8px 8px 0 0;
+
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 1.5rem;
-  gap: 2rem;
-  background-color: #ab0a10;
-  border-radius: 8px;
   position: relative;
   max-width: 800px;
-  width: 90%;
+  width: 80%;
+  height: 40%;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  animation: scaleUp 0.7s ease-out; /* Animation */
+  animation: translate 1.5s ease-out; /* Animation */
 }
 .model > img {
-  max-width: 17rem;
+  max-height: 100%;
   border-radius: 8px;
 }
+
 .movieInfo {
+  animation: translate 1.5s ease-out; 
+
+  background:linear-gradient(rgba(3, 7, 56, 1),rgba(220, 38, 38,.5)) ;
+  /* background-color: rgba(3, 7, 56, 0.73); */
+  width: 80%;
+  padding: 1.5rem;
+  border-radius:0 0 8px 8px;
+
+  max-width: 800px;
   text-align: center;
 }
+
 
 .modal-close {
   position: absolute;
@@ -171,13 +209,13 @@ h1 {
   font-size: 1.5rem;
   cursor: pointer;
 }
-@keyframes scaleUp {
+@keyframes translate {
   from {
-    transform: scale(0.7);
+    transform: translateY(-15rem);
     opacity: 0;
   }
   to {
-    transform: scale(1);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -185,4 +223,24 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (max-width:700px) {
+  .cards{
+    padding: 1rem;
+    gap: .5rem;
+  }
+  .card{
+    max-height: 7rem;
+  }
+  .card>button{
+    height: 1.5rem;
+    width: 3rem;   
+    margin: .5rem;
+  }
+  .card>h4{
+    font-size: x-small;
+  }
+  .cards{
+    transform: translateY(-7rem);
+  }
 }

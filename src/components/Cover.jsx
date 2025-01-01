@@ -7,10 +7,10 @@ export default function Cover({ handleClick,popular  }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % 8);
+      setIndex((prev) => (prev + 1) % 7);
     }, 3000);
   }, []);
-  const pos = `https://image.tmdb.org/t/p/original/${popular[index].backdrop_path}`;
+  const pos = `https://image.tmdb.org/t/p/w1280/${popular[index].backdrop_path}`;
   const styles = {
     backgroundImage: `url(${pos})`,
   };
@@ -19,10 +19,10 @@ export default function Cover({ handleClick,popular  }) {
       <div className="cover" style={styles}></div>
       <div className="cards">
         {popular.map((movie, ind) => {
-          if (ind > 7) {
+          if (ind > 6) {
             return;
           }
-          const poster = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
+          const poster = `https://image.tmdb.org/t/p/w780/${movie.poster_path}`;
           return (
             <motion.div
               key={movie.id}
@@ -32,15 +32,15 @@ export default function Cover({ handleClick,popular  }) {
               //   big: ind === index,
               // })}
               initial={{
-                width: "300px",
+                width: "12.2rem",
                 height: "200px",
-                opacity: 0.7,
+                opacity: 0.8,
                 scale: 1,
               }}
               animate={
                 ind === index
-                  ? { scale: 1.5, opacity: 1, zIndex: 2 }
-                  : { opacity: 0.7, scale: 1 }
+                  ? { scale: 1.25, opacity: 1, zIndex: 2 }
+                  : { opacity: 0.8, scale: 1 }
               }
               transition={{ duration: 0.8 }}
               style={{

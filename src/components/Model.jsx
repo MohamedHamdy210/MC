@@ -1,28 +1,37 @@
 /* eslint-disable react/prop-types */
 const Model = ({ model,setIsModelVisiable }) => {
-
+  const pos = `https://image.tmdb.org/t/p/w1280/${model.backdrop_path}`;
+  const styles = {
+     backgroundImage: `url(${pos})`,
+     backgroundPosition: "center",
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+   };
   return (
     <div
       className="overlay"
       onClick={() => setIsModelVisiable((prev) => !prev)}
     >
       <div
+        style={styles}
         className="model"
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
         <img
-          src={`https://image.tmdb.org/t/p/original/${model.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w780/${model.poster_path}`}
           alt="poster"
         />
-        <div className="movieInfo">
-          <button
-            className="modal-close"
-            onClick={() => setIsModelVisiable((prev) => !prev)}
-          >
-            ×
-          </button>
+        <button
+          className="modal-close"
+          onClick={() => setIsModelVisiable((prev) => !prev)}
+        >
+          ×
+        </button>
+        
+      </div>
+      <div className="movieInfo">
           <h2>{model.title}</h2>
           <div className="rate">
             <h3>User Score: {model.vote_average.toFixed(2)}</h3>
@@ -38,7 +47,6 @@ const Model = ({ model,setIsModelVisiable }) => {
           <h4>Release Date: {model.release_date}</h4>
           <p>Overview: {model.overview}</p>
         </div>
-      </div>
     </div>
   );
 };
