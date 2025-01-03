@@ -1,12 +1,26 @@
+import { useState } from "react";
+
 /* eslint-disable react/prop-types */
-const Model = ({ model,setIsModelVisiable }) => {
+const Model = ({ model, setIsModelVisiable, option }) => {
+  // const [video, setVideo] = useState(false);
+  // let link = "";
+  // fetch(
+  //   `https://api.themoviedb.org/3/movie/${model.id}/videos?language=en-US`,
+  //   option
+  // )
+  //   .then((res) => res.json())
+  //   .then((res) => (link = res.results.find((vid) => vid.type === "Trailer").key));
   const pos = `https://image.tmdb.org/t/p/w1280/${model.backdrop_path}`;
   const styles = {
-     backgroundImage: `url(${pos})`,
-     backgroundPosition: "center",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-   };
+    backgroundImage: `url(${pos})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
+  const handleClick=()=>{
+    console.log(link)
+    setVideo(true)
+  }
   return (
     <div
       className="overlay"
@@ -29,24 +43,32 @@ const Model = ({ model,setIsModelVisiable }) => {
         >
           ×
         </button>
-        
       </div>
-      <div className="movieInfo">
-          <h2>{model.title}</h2>
-          <div className="rate">
-            <h3>User Score: {model.vote_average.toFixed(2)}</h3>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ fill: "#fbbf24", width: 35, marginLeft: 15 }}
-              viewBox="0 0 24 24"
-            >
-              <path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" />
-            </svg>
-          </div>
-
-          <h4>Release Date: {model.release_date}</h4>
-          <p>Overview: {model.overview}</p>
+      {/* {video && (
+        <iframe src={`https://www.youtube.com/embed/${link}?autoplay`}></iframe>
+      )} */}
+      <div
+        className="movieInfo"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <h2>{model.title}</h2>
+        <div className="rate">
+          <h3>User Score: {model.vote_average.toFixed(2)}</h3>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ fill: "#fbbf24", width: 35, marginLeft: 15 }}
+            viewBox="0 0 24 24"
+          >
+            <path d="M12,15.39L8.24,17.66L9.23,13.38L5.91,10.5L10.29,10.13L12,6.09L13.71,10.13L18.09,10.5L14.77,13.38L15.76,17.66M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" />
+          </svg>
         </div>
+
+        <h4>Release Date: {model.release_date}</h4>
+        <p>Overview: {model.overview}</p>
+        {/* <button onClick={handleClick}>Trailer</button> */}
+      </div>
     </div>
   );
 };

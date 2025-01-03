@@ -47,13 +47,7 @@ export default function Cover({ handleClick,popular  }) {
                 backgroundImage: `url(${poster})`,
               }}
             >
-              <motion.h4
-                initial={{ opacity: 0 }}
-                animate={ind === index ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                {movie.title}
-              </motion.h4>
+              
 
               <motion.button
                 initial={{ opacity: 0 }}

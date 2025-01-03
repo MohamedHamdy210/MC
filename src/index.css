@@ -51,7 +51,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   border-radius: 8px;
   background-position: center;
   background-size: contain;
@@ -60,16 +60,14 @@ h1 {
   color: white;
   overflow: hidden;
 }
-.card > h4 {
-  margin: 0;
-  text-align: center;
-}
+
 
 .card > button {
+  text-align: center;
   background-color: #ab0a10;
   border: none;
   height: 2.2rem;
-  width: 6rem;
+  width: 4rem;
   border-radius: 8px;
   color: #fff;
   cursor: pointer;
@@ -184,17 +182,17 @@ h1 {
 .model > img {
   max-height: 100%;
   border-radius: 8px;
+
 }
 
 .movieInfo {
   animation: translate 1.5s ease-out; 
-
   background:linear-gradient(rgba(3, 7, 56, 1),rgba(220, 38, 38,.5)) ;
   /* background-color: rgba(3, 7, 56, 0.73); */
   width: 80%;
   padding: 1.5rem;
   border-radius:0 0 8px 8px;
-
+  z-index: 1001;
   max-width: 800px;
   text-align: center;
 }
@@ -224,10 +222,40 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-@media (max-width:700px) {
+/* HTML: <div class="loader"></div> */
+.loader {
+margin-top: 10rem;
+  align-self: center;
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #ab0a10;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+@keyframes l20-1{
+   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
+   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
+   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
+   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
+   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+}
+@keyframes l20-2{ 
+  0%    {transform:scaleY(1)  rotate(0deg)}
+  49.99%{transform:scaleY(1)  rotate(135deg)}
+  50%   {transform:scaleY(-1) rotate(0deg)}
+  100%  {transform:scaleY(-1) rotate(-135deg)}
+}
+@media (max-width:715px) {
   .cards{
     padding: 1rem;
     gap: .5rem;
+  }
+  .PCard, .PCard>img{
+    width: 10.5rem;
   }
   .card{
     max-height: 7rem;
@@ -237,10 +265,88 @@ h1 {
     width: 3rem;   
     margin: .5rem;
   }
-  .card>h4{
-    font-size: x-small;
-  }
+ .model > img {
+  max-height: 70%;
+  border-radius: 8px;
+
+}
   .cards{
     transform: translateY(-7rem);
   }
+}
+@media (max-width:512px) {
+  
+  .card{
+    max-height: 3rem;
+    max-width: 2rem;
+  }
+  .PCard, .PCard>img{
+    width: 8rem;
+  }
+  .card>button{
+    height: 1rem;
+    width: 2rem;   
+    margin: .5rem;
+    font-size: x-small;
+  }
+  .category{
+    align-items: center;
+  }
+  .cards{
+    gap: .25rem;
+    padding: 0;
+    /* transform: translateY(00); */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+ .model > img {
+  max-height: 60%;
+  border-radius: 8px;
+
+} 
+.lCard>img,.lCard{
+  max-width: 10rem;
+}
+
+}
+@media (max-width:438px) {
+ .PCard, .PCard>img{
+    width: 6rem;
+  }
+  .lCard>img,.lCard{
+  max-width: 6rem;
+} 
+
+  .card{
+    max-height: 3rem;
+    max-width: 2rem;
+  }
+  .card>button{
+    text-align: center;
+    height: 1rem;
+    width: 2rem;   
+    /* margin: .5rem; */
+    font-size: x-small;
+  }
+  .model > img {
+  max-height: 50%;
+  border-radius: 8px;
+
+}
+  .cards{
+    gap: .15rem;
+    padding: 0.15rem;
+    /* transform: translateY(00); */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .category{
+    padding: 1rem;
+
+  }
+  .category>h1{
+   
+    font-size: 1.35rem;
+  }
+  
 }

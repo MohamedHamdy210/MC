@@ -48,7 +48,7 @@ function App() {
         setNowPlaying(now.results)
         setPopular(pop.results)
         setTopRated(top.results)
-        setLoading(false)
+        setTimeout(()=>{setLoading(false)},1000)
 
       
     } catch (error) {
@@ -73,7 +73,7 @@ fetchData()
         <>
           <Cover popular={popular} handleClick={handleClick} />
           {isModelVisiable && (
-            <Model model={model} setIsModelVisiable={setIsModelVisiable} />
+            <Model option={options} model={model} setIsModelVisiable={setIsModelVisiable} />
           )}
           <div className="lists">
             <List handleClick={handleClick} name="Popular" arr={[...popular]} />
@@ -136,6 +136,10 @@ fetchData()
     },
   ]);
 
-  return loading ? <h1>Loading</h1> : <RouterProvider router={router} />;
+  return loading ? (
+    <div className="loader"></div>
+  ) : (
+    <RouterProvider router={router} />
+  );
 }
 export default App;
