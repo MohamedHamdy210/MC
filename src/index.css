@@ -401,7 +401,9 @@ height:12rem ;
 .lCard>img,.lCard{
   max-width: 10rem;
 }
-
+.cover{
+  background-size: contain;
+}
 }
 @media (max-width:438px) {
  .PCard, .PCard>img{
