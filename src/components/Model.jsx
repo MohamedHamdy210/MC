@@ -2,14 +2,20 @@ import { useState } from "react";
 
 /* eslint-disable react/prop-types */
 const Model = ({ model, setIsModelVisiable, option }) => {
-  // const [video, setVideo] = useState(false);
-  // let link = "";
-  // fetch(
-  //   `https://api.themoviedb.org/3/movie/${model.id}/videos?language=en-US`,
-  //   option
-  // )
-  //   .then((res) => res.json())
-  //   .then((res) => (link = res.results.find((vid) => vid.type === "Trailer").key));
+  const [video, setVideo] = useState(false);
+  const [link, setLink] = useState("");
+  fetch(
+    `https://api.themoviedb.org/3/movie/${model.id}/videos?language=en-US`,
+    option
+  )
+    .then((res) => res.json())
+    .then((res) =>
+      setLink(
+        `https://www.youtube.com/embed/${
+          res.results.find((vid) => vid.type === "Trailer").key
+        }`
+      )
+    );
   const pos = `https://image.tmdb.org/t/p/w1280/${model.backdrop_path}`;
   const styles = {
     backgroundImage: `url(${pos})`,
@@ -17,10 +23,10 @@ const Model = ({ model, setIsModelVisiable, option }) => {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
-  const handleClick=()=>{
-    console.log(link)
-    setVideo(true)
-  }
+  const handleClick = () => {
+    console.log(link);
+    setVideo(true);
+  };
   return (
     <div
       className="overlay"
@@ -44,9 +50,28 @@ const Model = ({ model, setIsModelVisiable, option }) => {
           ×
         </button>
       </div>
-      {/* {video && (
-        <iframe src={`https://www.youtube.com/embed/${link}?autoplay`}></iframe>
-      )} */}
+      {video && (
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="video"
+        >
+          <button
+            className="video-close"
+            onClick={() => setVideo((prev) => !prev)}
+          >
+            ×
+          </button>
+          <iframe
+            src={link}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share ;fullscreen"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      )}
       <div
         className="movieInfo"
         onClick={(e) => {
@@ -67,7 +92,7 @@ const Model = ({ model, setIsModelVisiable, option }) => {
 
         <h4>Release Date: {model.release_date}</h4>
         <p>Overview: {model.overview}</p>
-        {/* <button onClick={handleClick}>Trailer</button> */}
+        <button onClick={handleClick}>Trailer</button>
       </div>
     </div>
   );

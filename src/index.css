@@ -15,6 +15,47 @@ body {
   justify-content: center;
   /* margin: 1rem; */
 }
+header{
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: #ab0a10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: rgba(171, 10, 16, 1); */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+h1{
+  color: #ab0a10;
+}
+.pointer{
+  cursor: pointer;
+}
+.flex{
+  max-width: min-content;
+  margin: 0 1rem;
+  display: flex;
+  gap: .75rem;
+  align-items: center;
+}
+.flex button{
+  cursor: pointer;
+  height: 3rem;
+  width: max-content;
+  border: none;
+  color: #ab0a10;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: rgba(0, 0, 0, 0);
+}
+.flex button:hover{
+  background-color: rgba(220, 38, 38,.5);
+}
+header img{
+  width:  60%;
+}
 h1 {
   text-align: center;
 }
@@ -24,7 +65,7 @@ h1 {
   background-repeat: no-repeat;
   /* margin: 0 .5rem; */
   min-height: 350px;
-  padding: 5rem 0;
+  padding: 7rem 0;
   animation: slide 3s infinite;
 }
 @keyframes slide {
@@ -127,6 +168,9 @@ h1 {
 .lCard:hover {
   transform: scale(1.1);
 }
+.page{
+  margin: 4rem 0;
+}
 .PList {
   margin: 1.5rem;
   display: flex;
@@ -173,7 +217,7 @@ h1 {
   justify-content: flex-start;
   padding: 1.5rem;
   position: relative;
-  max-width: 800px;
+  max-width: 900px;
   width: 80%;
   height: 40%;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
@@ -193,8 +237,20 @@ h1 {
   padding: 1.5rem;
   border-radius:0 0 8px 8px;
   z-index: 1001;
-  max-width: 800px;
+  max-width: 900px;
   text-align: center;
+}
+.movieInfo>button{
+  cursor: pointer;
+   text-align: center;
+  background-color: #ab0a10;
+  border: none;
+  height: 2.2rem;
+  width: 4rem;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  font-size: large;
 }
 
 
@@ -206,6 +262,31 @@ h1 {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+}
+.video-close {
+  
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color:rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1006;
+  color: #fff;
+}
+.video{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width:65% ;
+  max-width: 900px;
+
+  z-index: 1005;
+}
+.video>iframe{
+height:28rem ;  
 }
 @keyframes translate {
   from {
@@ -270,8 +351,18 @@ margin-top: 10rem;
   border-radius: 8px;
 
 }
+
+.video>iframe{
+height:12rem ;  
+}
   .cards{
     transform: translateY(-7rem);
+  }
+  header{
+    font-size: .8rem;
+  }
+  .flex button{
+    font-size: .7rem;
   }
 }
 @media (max-width:512px) {

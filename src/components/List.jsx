@@ -2,6 +2,7 @@
 
 import { useNavigate } from "react-router";
 import arrow from "../assets/arrow.svg";
+
 export default function List({ arr, name, handleClick }) {
   const navigate = useNavigate();
   const cardElements = arr.map((movie, index) => {

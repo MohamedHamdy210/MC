@@ -4,6 +4,7 @@ import List from "./components/List";
 import Page from "./components/Page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Model from "./components/Model";
+import Header from "./components/Header";
 
 function App() {
   const [popular, setPopular] = useState([]);
@@ -71,9 +72,14 @@ fetchData()
       path: "/",
       element: (
         <>
+          <Header />
           <Cover popular={popular} handleClick={handleClick} />
           {isModelVisiable && (
-            <Model option={options} model={model} setIsModelVisiable={setIsModelVisiable} />
+            <Model
+              option={options}
+              model={model}
+              setIsModelVisiable={setIsModelVisiable}
+            />
           )}
           <div className="lists">
             <List handleClick={handleClick} name="Popular" arr={[...popular]} />
@@ -95,6 +101,8 @@ fetchData()
       path: "/popular",
       element: (
         <>
+          <Header />
+
           {isModelVisiable && (
             <Model model={model} setIsModelVisiable={setIsModelVisiable} />
           )}
@@ -107,6 +115,8 @@ fetchData()
       path: "/Top Rated",
       element: (
         <>
+          <Header />
+
           {isModelVisiable && (
             <Model model={model} setIsModelVisiable={setIsModelVisiable} />
           )}
@@ -123,6 +133,8 @@ fetchData()
       path: "/Now Playing",
       element: (
         <>
+          <Header />
+
           {isModelVisiable && (
             <Model model={model} setIsModelVisiable={setIsModelVisiable} />
           )}

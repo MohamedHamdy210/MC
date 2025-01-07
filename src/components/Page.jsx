@@ -13,8 +13,10 @@ export default function Page({ arr, name, handleClick }) {
   });
   return (
     <>
-      <h1>{name} Movies</h1>
-      <div className="PList">{cardElements}</div>
+      <div className="page">
+        <h1>{name} Movies</h1>
+        <div className="PList">{cardElements}</div>
+      </div>
     </>
   );
 }
