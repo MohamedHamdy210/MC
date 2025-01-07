@@ -255,10 +255,10 @@ h1 {
 
 
 .modal-close {
+  background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
@@ -343,11 +343,11 @@ margin-top: 10rem;
   }
   .card>button{
     height: 1.5rem;
-    width: 3rem;   
+    width: 3rem;     
     margin: .5rem;
   }
  .model > img {
-  max-height: 70%;
+  max-height: 80%;
   border-radius: 8px;
 
 }
@@ -363,6 +363,9 @@ height:12rem ;
   }
   .flex button{
     font-size: .7rem;
+  }
+  .model{
+    max-height: 13rem;
   }
 }
 @media (max-width:512px) {
@@ -391,7 +394,7 @@ height:12rem ;
     justify-content: center;
   }
  .model > img {
-  max-height: 60%;
+  max-height: 70%;
   border-radius: 8px;
 
 } 
@@ -420,7 +423,7 @@ height:12rem ;
     font-size: x-small;
   }
   .model > img {
-  max-height: 50%;
+  max-height: 60%;
   border-radius: 8px;
 
 }
