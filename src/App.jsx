@@ -104,7 +104,11 @@ fetchData()
           <Header />
 
           {isModelVisiable && (
-            <Model model={model} setIsModelVisiable={setIsModelVisiable} />
+            <Model
+              model={model}
+              option={options}
+              setIsModelVisiable={setIsModelVisiable}
+            />
           )}
 
           <Page arr={[...popular]} handleClick={handleClick} name={"Popular"} />
@@ -118,7 +122,11 @@ fetchData()
           <Header />
 
           {isModelVisiable && (
-            <Model model={model} setIsModelVisiable={setIsModelVisiable} />
+            <Model
+              option={options}
+              model={model}
+              setIsModelVisiable={setIsModelVisiable}
+            />
           )}
 
           <Page
@@ -136,7 +144,11 @@ fetchData()
           <Header />
 
           {isModelVisiable && (
-            <Model model={model} setIsModelVisiable={setIsModelVisiable} />
+            <Model
+              option={options}
+              model={model}
+              setIsModelVisiable={setIsModelVisiable}
+            />
           )}
           <Page
             arr={[...nowPlaying]}

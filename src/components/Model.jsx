@@ -4,18 +4,7 @@ import { useState } from "react";
 const Model = ({ model, setIsModelVisiable, option }) => {
   const [video, setVideo] = useState(false);
   const [link, setLink] = useState("");
-  fetch(
-    `https://api.themoviedb.org/3/movie/${model.id}/videos?language=en-US`,
-    option
-  )
-    .then((res) => res.json())
-    .then((res) =>
-      setLink(
-        `https://www.youtube.com/embed/${
-          res.results.find((vid) => vid.type === "Trailer").key
-        }`
-      )
-    );
+  
   const pos = `https://image.tmdb.org/t/p/w1280/${model.backdrop_path}`;
   const styles = {
     backgroundImage: `url(${pos})`,
@@ -24,7 +13,18 @@ const Model = ({ model, setIsModelVisiable, option }) => {
     backgroundRepeat: "no-repeat",
   };
   const handleClick = () => {
-    console.log(link);
+    fetch(
+      `https://api.themoviedb.org/3/movie/${model.id}/videos?language=en-US`,
+      option
+    )
+      .then((res) => res.json())
+      .then((res) =>
+        setLink(
+          `https://www.youtube.com/embed/${
+            res.results.find((vid) => vid.type === "Trailer").key
+          }`
+        )
+      );
     setVideo(true);
   };
   return (
@@ -68,7 +68,6 @@ const Model = ({ model, setIsModelVisiable, option }) => {
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share ;fullscreen"
             referrerPolicy="strict-origin-when-cross-origin"
-            allowfullscreen
           ></iframe>
         </div>
       )}
