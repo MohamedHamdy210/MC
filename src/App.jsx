@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDebounce } from "react-use";
 import Search from "./compenets/Search";
 import Spinner from "./compenets/Spinner";
@@ -22,13 +22,17 @@ function App() {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [modal, setModal] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [movieDetails, setMovieDetails] = useState(null);
-  // const [movieVideo, setMovieVideo] = useState("");
   const [page, setPage] = useState(0);
+  const moviesRef = useRef(null);
 
-  useDebounce(() => {setDebouncedSearchTerm(searchTerm)
-    setPage(0)
-  }, 500, [searchTerm]);
+  useDebounce(
+    () => {
+      setDebouncedSearchTerm(searchTerm);
+      setPage(0);
+    },
+    500,
+    [searchTerm]
+  );
   const fetchMovies = async (query = "") => {
     setIsLoading(true);
     setErrorMessage("");
@@ -76,14 +80,14 @@ function App() {
       console.error("Error fetching movies:", error);
     }
   };
-  
+
   useEffect(() => {
     fetchMovies(debouncedSearchTerm);
-  }, [debouncedSearchTerm ,page]);
+  }, [debouncedSearchTerm, page]);
   useEffect(() => {
     fetchTrendingMovies();
   }, []);
-  
+
   const handleClick = (movie) => {
     setModal(movie.id);
     setIsModalOpen(true);
@@ -151,7 +155,7 @@ function App() {
             </div>
           </section>
         )}
-        <section className="all-movies ">
+        <section className="all-movies " ref={moviesRef}>
           <h2>All Movies</h2>
           {isLoading ? (
             <Spinner />
@@ -174,6 +178,9 @@ function App() {
               onClick={() => {
                 if (page > 0) {
                   setPage((prev) => prev - 1);
+                  moviesRef.current.scrollIntoView({
+                    behavior: "smooth",
+                  });
                 }
               }}
             >
@@ -188,6 +195,9 @@ function App() {
               onClick={() => {
                 if (page < 49) {
                   setPage((prev) => prev + 1);
+                  moviesRef.current.scrollIntoView({
+                    behavior: "smooth",
+                  });
                 }
               }}
             >

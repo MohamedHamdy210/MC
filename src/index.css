@@ -78,7 +78,7 @@
     @apply w-full;
   }
   .movie-details-row{
-    @apply flex flex-col gap-5 sm:flex-row ;
+    @apply flex flex-col gap-5 sm:flex-row justify-center items-center  ;
   }
   .page-button{
     display: none;

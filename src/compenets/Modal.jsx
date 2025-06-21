@@ -69,9 +69,7 @@ const Modal = ({ closeModal, movieId }) => {
   useEffect(() => {
     fetchMovieDetails(movieId);
     fetchMovieVideo(movieId);
-    // return () => {
-    //   second
-    // }
+    
   }, []);
 
   return isLoading ? (
@@ -96,7 +94,7 @@ const Modal = ({ closeModal, movieId }) => {
             onClick={() => {
               closeModal();
             }}
-            className=" text-white text-2xl bg-gray-600 rounded-lg px-2 py-1"
+            className=" text-white text-2xl bg-gray-600 rounded-lg px-2 py-1 cursor-pointer"
           >
             X
           </button>
@@ -150,11 +148,11 @@ const Modal = ({ closeModal, movieId }) => {
             ></iframe>
           )}
         </div>
-        <div className="modal-content mt-6 flex justify-between text-white">
+        <div className="modal-content mt-6 flex justify-center sm:justify-between text-white">
           <div className="movie-details flex  flex-col w-3/4 gap-6">
             <div className="movie-details-row">
               <div className="flex-1/5 text-gray-100">Generes</div>
-              <div className="flex-4/5 flex gap-3 flex-wrap">
+              <div className="flex-4/5 flex gap-3 flex-wrap w-full">
                 {movieDetails.genres?.map((genre) => (
                   <span className=" bg-gray-600  p-2 rounded-lg">
                     {genre.name}
@@ -164,7 +162,7 @@ const Modal = ({ closeModal, movieId }) => {
             </div>
             <div className="movie-details-row   ">
               <div className="flex-1/5 text-gray-100">Overview</div>
-              <div className="flex-4/5 max-w-4/5">{movieDetails.overview}</div>
+              <div className="flex-4/5  ">{movieDetails.overview}</div>
             </div>
             <div className="movie-details-row ">
               <div className="flex-1/5 text-gray-100">Release Date</div>
